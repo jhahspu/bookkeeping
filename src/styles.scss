@@ -1,1 +1,193 @@
-/* You can add global styles to this file, and also import other style files */
+
+// VARIABLES
+$clr: 193;
+$primaryText: hsla($clr, 100, 10, 1);
+$accent: hsla($clr, 100, 30, 1);
+$bgaccent: hsla($clr, 100, 96, 1);
+
+$linkactive: hsla($clr, 10, 90, 1);
+$link: hsla($clr, 10, 65, 1);
+
+$success: hsla(140, 100, 30, 1);
+$warning: hsla(350, 100, 30, 1);
+
+$box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.4);
+$text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+
+// MIXINS:
+@mixin container {
+  width: 80%;
+  max-width: 1400px;
+  margin: 0 auto;
+  @media (max-width: 768px) {
+    width: 95%;
+  }
+}
+
+@mixin button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: $accent;
+  color: white;
+  box-shadow: $box-shadow;
+  text-transform: uppercase;
+  font-family: monospace;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.2ch;
+  transition: all 0.2s ease;
+  outline: none;
+  cursor: pointer;
+  &.success {
+    background-color: $success;
+    color: white;
+  }
+  &.warning {
+    background-color: $warning;
+    color: white;
+  }
+  &:hover {
+    filter: brightness(80%);
+  }
+}
+
+
+
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 18px;
+  font-family: sans-serif;
+  color: $primaryText;
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+}
+
+
+// HTML ELEMENTS
+
+header {
+  background: $accent;
+  box-shadow: $box-shadow;
+  div {
+    @include container;
+    a {
+      display: inline-block;
+      color: $link;
+      padding: 1rem;
+      font-size: 1rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      text-shadow: $text-shadow;
+      letter-spacing: 0.2ch;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      &:hover {
+        color: $linkactive;
+      }
+      &.al {
+        color: $linkactive;
+      }
+    }
+  }
+
+}
+
+
+.container {
+  @include container;
+  margin: 1rem auto;
+  h2 {
+    margin-bottom: 1.2rem;
+    text-shadow: $text-shadow;
+    font-weight: 500;
+  }
+  h3 {
+    font-weight: 500;
+  }
+}
+
+button {
+  @include button;
+}
+
+.tbl {
+  overflow-x: auto;
+  table {
+    margin: 0.5rem 0;
+    border: 2px solid $accent;
+    border-radius: 4px;
+    border-spacing: 1px;
+    th,
+    td {
+      min-width: 120px;
+      padding: 0.5rem;
+      text-align: center;
+      font-weight: 500;
+    }
+    thead {
+      background-color: $accent;
+      color: white;
+    }
+    tbody {
+      tr:nth-of-type(2n+1) {
+        background-color: $bgaccent;
+      }
+    }
+  }
+}
+
+
+
+form {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  // border: 2px solid $accent;
+  border-radius: 4px;
+
+  .form-group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  select {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: $bgaccent;
+    outline: none;
+    border: 1px solid $accent;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  input { width: 100%; }
+
+  input[type=number],
+  input[type=text] {
+    padding: 0.5rem;
+    border: 1px solid $accent;
+    border-radius: 4px;
+    background-color: $bgaccent;
+    outline: none;
+    font-size: 1rem;
+    &:disabled {
+      background-color: lightgrey;
+    }
+  }
+  input[type= button] {
+    @include button;
+  }
+}
+

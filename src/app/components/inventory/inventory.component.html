@@ -1,0 +1,60 @@
+<div class="container">
+  <h2>Inventory</h2>
+
+  <h3>Add Invoice</h3>
+  <form [formGroup]="invForm">
+    <div class="form-group">
+      <input class="form-control" formControlName="invProduct" type="text" placeholder="Product">
+    </div>
+    <div class="form-group">
+      <input class="form-control" formControlName="invQty" type="number" min="1" placeholder="qty">
+    </div>
+    <div class="form-group">
+      <input class="form-control" formControlName="invPrice" type="number" min="1" placeholder="P price 1pc">
+    </div>
+
+    
+    <div class="form-group">
+      <input class="form-control" (click)="btnInventory()" type="button" value="add prod.">
+    </div>
+  </form>
+
+  <h3>Invoice history</h3>
+  <div class="tbl">
+    <table>
+      <thead>
+        <tr>
+          <th rowspan="2">Date</th>
+          <th>Product</th>
+          <th>Purchased</th>
+          <th>Available</th>
+          <th>Purchase</th>
+          <th>Purchase</th>
+          <th>Sales</th>
+          <th>Sales</th>
+        </tr>
+        <tr>
+          <th>Name</th>
+          <th>qty</th>
+          <th>qty</th>
+          <th>Price /1pc</th>
+          <th>Value</th>
+          <th>Price /1pc</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="invoices">
+        <tr *ngFor="let inv of invoices.reverse()">
+          <td>{{ inv.date }}</td>
+          <td>{{ inv.prod }}</td>
+          <td>{{ inv.qty }}</td>
+          <td>{{ inv.aqty }}</td>
+          <td>{{ inv.pprice }}</td>
+          <td>{{ inv.pvalue }}</td>
+          <td>{{ inv.sprice }}</td>
+          <td>{{ inv.svalue }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

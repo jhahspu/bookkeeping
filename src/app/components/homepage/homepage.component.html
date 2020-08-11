@@ -1,0 +1,47 @@
+<div class="container">
+  <h2>Homepage</h2>
+
+  <form [formGroup]="recForm">
+    <div class="form-group">
+      <select class="form-control" formControlName="recProduct">
+        <!-- <option value="product" [selected]="'product'" disabled hidden>product</option>
+        <option value="monitor">monitor</option>
+        <option value="cable">cable</option> -->
+        <option *ngFor="let prod of invoices" [value]="prod.prod">{{prod.prod}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <input class="form-control" formControlName="recQty" type="number" min="1" placeholder="qty">
+    </div>
+    <div class="form-group">
+      <input class="form-control" formControlName="recPrice" type="number" min="1" placeholder="price 1pc">
+    </div>
+    <div class="form-group">
+      <input class="form-control" (click)="btnReceipt()" type="button" value="receipt">
+    </div>
+  </form>
+
+  <div class="tbl">
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Available</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <th>Name</th>
+          <th>qty</th>
+          <th>1pc</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let inv of invoices">
+          <td>{{ inv.prod }}</td>
+          <td>{{ inv.aqty }}</td>
+          <td>{{ inv.sprice }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

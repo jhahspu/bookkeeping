@@ -1,0 +1,52 @@
+<div class="container">
+  <h2>Accounting</h2>
+  <h2>Budget: {{ budget }}</h2>
+  
+  <h3>Register expense, deposit or withdraw</h3>
+  <form [formGroup]="accForm">
+    <div class="form-group">
+      <input class="form-control" formControlName="accValue" type="number" min="1" placeholder="amount">
+    </div>
+    <div class="form-group">
+      <select class="form-control" formControlName="accDetail">
+        <option value="type" [selected]="'type'" disabled hidden>type</option>
+        <option value="expense">expense</option>
+        <option value="deposit">deposit</option>
+        <option value="withdraw">withdraw</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <input class="form-control" (click)="buttonTransaction()" type="button" value="add trans.">
+    </div>
+  </form>
+
+  <h3>Transacion history</h3>
+  <div class="tbl">
+    <table>
+      <thead>
+        <tr>
+          <th rowspan="2">Date</th>
+          <th rowspan="2">Value</th>
+          <th>Operation</th>
+          <th>Prev.</th>
+          <th>New</th>
+        </tr>
+        <tr>
+          <th>Detail</th>
+          <th>Budget</th>
+          <th>Budget</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="transactions">
+        <tr *ngFor="let trs of transactions.reverse()">
+          <td>{{ trs.date }}</td>
+          <td>{{ trs.value }}</td>
+          <td>{{ trs.detail }}</td>
+          <td>{{ trs.oValue }}</td>
+          <td>{{ trs.nValue }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
