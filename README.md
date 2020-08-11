@@ -4,6 +4,7 @@
 
 simple bookkeping app using angular
 
-usage: add budget in the acconting section
-add items to the inventory
-strart selling
+### usage: 
+- add budget in the accounting section
+- add items to the inventory
+- start selling available products
